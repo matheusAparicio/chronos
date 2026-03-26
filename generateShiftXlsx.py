@@ -31,7 +31,7 @@ def getNotionData(month=None, initialDate=None, finalDate=None):
     url = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
 
     payload = {
-        "page_size": int(os.getenv("REGISTERS_FETCH_LIMIT")),
+        "page_size": REGISTERS_FETCH_LIMIT,
         "filter": {},
     }
 
@@ -39,13 +39,13 @@ def getNotionData(month=None, initialDate=None, finalDate=None):
         # print(f"""Buscando registros entre {getFirstMonthDay(month)} e {getLastMonthDay(month)}""")
         payload["filter"]["and"] = [
             {
-                "property": notionLabels["created_at"], # <-- Altere para o nome exato da sua coluna
+                "property": NOTION_LABELS["created_at"], # <-- Altere para o nome exato da sua coluna
                 "date": {
                     "on_or_after": getFirstMonthDay(month)
                 }
             },
             {
-                "property": notionLabels["created_at"],
+                "property": NOTION_LABELS["created_at"],
                 "date": {
                     "on_or_before": getLastMonthDay(month)
                 }
@@ -54,13 +54,13 @@ def getNotionData(month=None, initialDate=None, finalDate=None):
     elif (initialDate and finalDate):
         payload["filter"]["and"] = [
             {
-                "property": notionLabels["created_at"], # <-- Altere para o nome exato da sua coluna
+                "property": NOTION_LABELS["created_at"], # <-- Altere para o nome exato da sua coluna
                 "date": {
                     "on_or_after": initialDate
                 }
             },
             {
-                "property": notionLabels["created_at"],
+                "property": NOTION_LABELS["created_at"],
                 "date": {
                     "on_or_before": finalDate
                 }
@@ -115,7 +115,7 @@ def generateXlsx(registers):
         # Sort registers chronologically to ensure Entradas and Saídas match correctly
         sortedRegisters = sorted(
             registers, 
-            key=lambda r: r.get(notionLabels["period"], {}).get("created_time", "")
+            key=lambda r: r.get(NOTION_LABELS["period"], {}).get("created_time", "")
         )
         
         shifts = []
@@ -123,7 +123,7 @@ def generateXlsx(registers):
         
         # Group pairs of "Entrada" and "Saída"
         for reg in sortedRegisters:
-            statusObj = reg.get(notionLabels["status"], {}).get("select")
+            statusObj = reg.get(NOTION_LABELS["status"], {}).get("select")
             statusName = statusObj.get("name") if statusObj else ""
             
             if statusName == "Entrada":
@@ -132,20 +132,20 @@ def generateXlsx(registers):
                 # --- EXTRACT DATA BEFORE APPENDING ---
                 
                 # 1. Extract Project
-                projectObj = currentEntry.get(notionLabels["project"], {}).get("select")
-                projectName = projectObj.get("name") if projectObj else "Sem Projeto"
+                projectObj = currentEntry.get(NOTION_LABELS["project"], {}).get("select")
+                projectName = projectObj.get("name") if projectObj else "Evolução e Otimização de Sistemas"
                 
                 print(currentEntry)
                 # 2. Extract Task
-                taskArr = currentEntry.get(notionLabels["task"], {}).get("rich_text", [])
+                taskArr = currentEntry.get(NOTION_LABELS["task"], {}).get("rich_text", [])
                 if taskArr and len(taskArr) > 0:
                     taskName = "".join([textPart.get("plain_text", "") for textPart in taskArr])
                 else:
                     taskName = "Apontamento de Horas"
                 
                 # 3. Extract Timestamps
-                entryTimeStr = currentEntry.get(notionLabels["period"], {}).get("created_time", "")
-                exitTimeStr = reg.get(notionLabels["period"], {}).get("created_time", "")
+                entryTimeStr = currentEntry.get(NOTION_LABELS["period"], {}).get("created_time", "")
+                exitTimeStr = reg.get(NOTION_LABELS["period"], {}).get("created_time", "")
                 
                 entryDt = parseNotionTime(entryTimeStr)
                 exitDt = parseNotionTime(exitTimeStr)
@@ -177,12 +177,12 @@ def generateXlsx(registers):
                 break
             
             # Populate cells using the clean dictionary and constants
-            sheet.cell(row=rowIndex, column=spreadsheetColumns["name"], value=os.getenv("NAME", "Teteu"))
-            sheet.cell(row=rowIndex, column=spreadsheetColumns["project"], value=shift["project"])
-            sheet.cell(row=rowIndex, column=spreadsheetColumns["task"], value=shift["task"])
-            sheet.cell(row=rowIndex, column=spreadsheetColumns["date"], value=shift["date"])
-            sheet.cell(row=rowIndex, column=spreadsheetColumns["initial_timestamp"], value=shift["startTime"])
-            sheet.cell(row=rowIndex, column=spreadsheetColumns["final_timestamp"], value=shift["endTime"])
+            sheet.cell(row=rowIndex, column=SPREADSHEET_COLUMNS["name"], value=os.getenv("NAME", "Teteu"))
+            sheet.cell(row=rowIndex, column=SPREADSHEET_COLUMNS["project"], value=shift["project"])
+            sheet.cell(row=rowIndex, column=SPREADSHEET_COLUMNS["task"], value=shift["task"])
+            sheet.cell(row=rowIndex, column=SPREADSHEET_COLUMNS["date"], value=shift["date"])
+            sheet.cell(row=rowIndex, column=SPREADSHEET_COLUMNS["initial_timestamp"], value=shift["startTime"])
+            sheet.cell(row=rowIndex, column=SPREADSHEET_COLUMNS["final_timestamp"], value=shift["endTime"])
         
         wb.save(finalPath)
         # print(f"Sucesso! Arquivo gerado em: {finalPath}")

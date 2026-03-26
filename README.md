@@ -18,3 +18,6 @@ https://spiny-show-231.notion.site/Controle-de-Ponto-Template-32e324789a528073a3
     TITLE = "Lançamento Horas"
 
     Ao executar python .\generateShiftXlsl.py 02-2026, o arquivo gerado será o "Matheus - Lançamento Horas - 02-2026"
+
+# Executando o script
+

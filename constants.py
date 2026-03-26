@@ -1,4 +1,4 @@
-notionLabels = {
+NOTION_LABELS = {
     "project": "Projeto",
     "task": "Tarefa",
     "status": "Status",
@@ -6,7 +6,7 @@ notionLabels = {
     "created_at": "Criado em",
 }
 
-spreadsheetColumns = {
+SPREADSHEET_COLUMNS = {
     "name": 1,
     "project": 3,
     "task": 4,
@@ -14,3 +14,5 @@ spreadsheetColumns = {
     "initial_timestamp": 6,
     "final_timestamp": 7,
 }
+
+REGISTERS_FETCH_LIMIT = 80
