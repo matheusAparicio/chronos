@@ -17,10 +17,15 @@ https://spiny-show-231.notion.site/Controle-de-Ponto-Template-32e324789a528073a3
     NAME = "Matheus"
     TITLE = "Lançamento Horas"
 
-    Ao executar python .\generateShiftXlsl.py 02-2026, o arquivo gerado será o "Matheus - Lançamento Horas - 2026-02"
+    Ao executar ``python .\generateShiftXlsl.py 02-2026``, o arquivo gerado será o "Matheus - Lançamento Horas - 2026-02"
+
+# Instalação de pacotes necessários
+Os pacotes Python que são necessários instalar estão listados no arquivo requirements.txt.
+
+Para os instalar, basta executar o seguinte comando no root do projeto: ``pip install -r requirements.txt``
 
 # Executando o script
-Para executar o script é simples: basta navegar até o root do projeto e rodar "python .\generateShiftXlsx.py _param1_ _param2_"
+Para executar o script é simples: basta navegar até o root do projeto e rodar ``python .\generateShiftXlsx.py _param1_ _param2_``
 
 O script aceita 1 OU 2 parâmetros. Se for passado 1 parâmetro, é esperado que seja um mês e ano, no formato mm-yyyy ou yyyy-mm.
 

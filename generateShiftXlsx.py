@@ -1,10 +1,8 @@
 import requests
-import json
 from pathlib import Path
 import os
 import sys
 import openpyxl
-from openpyxl.styles import Protection
 from utilities import *
 from dotenv import load_dotenv
 from constants import *
@@ -133,7 +131,7 @@ def generateXlsx(registers):
                 # 1. Extract Project
                 projectObj = currentEntry.get(NOTION_LABELS["project"], {}).get("select")
                 projectName = projectObj.get("name") if projectObj else "Evolução e Otimização de Sistemas"
-                
+
                 # 2. Extract Task
                 taskArr = currentEntry.get(NOTION_LABELS["task"], {}).get("rich_text", [])
                 if taskArr and len(taskArr) > 0:
