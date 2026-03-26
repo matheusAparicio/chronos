@@ -25,3 +25,5 @@ Para executar o script é simples: basta navegar até o root do projeto e rodar 
 O script aceita 1 OU 2 parâmetros. Se for passado 1 parâmetro, é esperado que seja um mês e ano, no formato mm-yyyy ou yyyy-mm.
 
 Se forem passados 2 parâmetros, é esperado que sejam duas datas, a primeira para o início do período e a segunda para o final. Podem ser passadas no formato dd-mm-yyyy ou yyyy-mm-dd.
+
+Todos os .xlsx são gerados na pasta outputs, que fica no root do projeto.
