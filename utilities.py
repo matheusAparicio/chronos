@@ -76,3 +76,23 @@ def getLastMonthDay(month):
     except ValueError:
         print("Erro: A data informada é inválida. Por favor, use o formato 'yyyy-mm'.")
         return None
+    
+def extractProperties(notionPagesList):
+    # Check if the provided input is a valid list
+    if not isinstance(notionPagesList, list):
+        print("Erro: O formato fornecido não é uma lista válida.")
+        return []
+
+    # Create a new list containing only the 'properties' of each object
+    # It also checks if the item is a dictionary and contains the 'properties' key
+    propertiesList = [
+        pageObj["properties"] 
+        for pageObj in notionPagesList 
+        if isinstance(pageObj, dict) and "properties" in pageObj
+    ]
+
+    # Optional: Alert if some objects didn't have the 'properties' key
+    if len(propertiesList) < len(notionPagesList):
+        print("Aviso: Alguns objetos na lista não continham a chave 'properties' e foram ignorados.")
+
+    return propertiesList

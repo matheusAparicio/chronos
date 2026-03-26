@@ -32,6 +32,7 @@ def getNotionData(month=None, initialDate=None, finalDate=None):
     }
 
     if (month):
+        # print(f"""Buscando registros entre {getFirstMonthDay(month)} e {getLastMonthDay(month)}""")
         payload["filter"]["and"] = [
             {
                 "property": notionLabels["created_at"], # <-- Altere para o nome exato da sua coluna
@@ -68,15 +69,9 @@ def getNotionData(month=None, initialDate=None, finalDate=None):
     
     if response.status_code == 200:
         data = response.json()
-        results = data.get("results", [])
-        
-        # Exemplo básico de parsing:
-        for page in results:
-            # A estrutura exata do 'properties' vai depender de como você nomeou as colunas
-            # Aqui é um exemplo genérico acessando o nome/título da página e propriedades
-            properties = page.get("properties", {})
+        results = extractProperties(data.get("results", []))
 
-            print(json.dumps(properties, indent=2))
+        print(results)
 
         print(f"Encontrados {len(results)} registros de ponto.")
             
