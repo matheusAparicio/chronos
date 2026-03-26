@@ -36,7 +36,6 @@ def getNotionData(month=None, initialDate=None, finalDate=None):
     }
 
     if (month):
-        # print(f"""Buscando registros entre {getFirstMonthDay(month)} e {getLastMonthDay(month)}""")
         payload["filter"]["and"] = [
             {
                 "property": NOTION_LABELS["created_at"], # <-- Altere para o nome exato da sua coluna
@@ -135,7 +134,6 @@ def generateXlsx(registers):
                 projectObj = currentEntry.get(NOTION_LABELS["project"], {}).get("select")
                 projectName = projectObj.get("name") if projectObj else "Evolução e Otimização de Sistemas"
                 
-                print(currentEntry)
                 # 2. Extract Task
                 taskArr = currentEntry.get(NOTION_LABELS["task"], {}).get("rich_text", [])
                 if taskArr and len(taskArr) > 0:
@@ -185,7 +183,7 @@ def generateXlsx(registers):
             sheet.cell(row=rowIndex, column=SPREADSHEET_COLUMNS["final_timestamp"], value=shift["endTime"])
         
         wb.save(finalPath)
-        # print(f"Sucesso! Arquivo gerado em: {finalPath}")
+        print(f"Sucesso! Arquivo gerado em: {finalPath}")
         return str(finalPath)
         
     except Exception as e:
@@ -215,8 +213,6 @@ if __name__ == "__main__":
         sys.exit()
 
     registers = getNotionData(month, initialDate, finalDate)
-    generateXlsx(registers)
-
-    # print(registers)
-
     print(f"Encontrados {len(registers)} registros de ponto.")
+
+    generateXlsx(registers)
