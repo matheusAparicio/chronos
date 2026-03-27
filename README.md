@@ -1,4 +1,4 @@
-# Chronos
+# Quartz
 A ideia é pegar os dados do controle de ponto feito pelo Notion e, através de um script, gerar um PDF com os devidos registros.
 
 <img width="1915" height="890" alt="image" src="https://github.com/user-attachments/assets/9d6433b0-0882-48e8-9a42-86963779323e" />
