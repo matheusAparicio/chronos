@@ -99,7 +99,7 @@ def generateXlsx(registers):
     outputsDir.mkdir(exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    fileName = f"{os.getenv("NAME")} - {os.getenv("TITLE")} - {month if month else f"{initialDate} -> {finalDate}"}.xlsx"
+    fileName = f"{os.getenv("NAME")} - {os.getenv("TITLE")} - {month if month else f"{initialDate}_{finalDate}"}.xlsx"
     finalPath = outputsDir / fileName
     
     templatePath = baseDir / "spreadsheet_template.xlsx"

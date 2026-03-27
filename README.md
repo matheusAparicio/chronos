@@ -25,7 +25,7 @@ Os pacotes Python que são necessários instalar estão listados no arquivo requ
 Para os instalar, basta executar o seguinte comando no root do projeto: ``pip install -r requirements.txt``
 
 # Executando o script
-Para executar o script é simples: basta navegar até o root do projeto e rodar ``python .\generateShiftXlsx.py _param1_ _param2_``
+Para executar o script é simples: basta navegar até o root do projeto e rodar ``python .\generateShiftXlsx.py param1 param2``
 
 O script aceita 1 OU 2 parâmetros. Se for passado 1 parâmetro, é esperado que seja um mês e ano, no formato mm-yyyy ou yyyy-mm.
 
