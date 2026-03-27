@@ -1,6 +1,12 @@
 # Chronos
 A ideia é pegar os dados do controle de ponto feito pelo Notion e, através de um script, gerar um PDF com os devidos registros.
 
+<img width="1915" height="890" alt="image" src="https://github.com/user-attachments/assets/9d6433b0-0882-48e8-9a42-86963779323e" />
+
+<img width="1919" height="974" alt="image" src="https://github.com/user-attachments/assets/4a48aabd-c171-4ce4-9e24-eb0a8363c5d2" />
+
+
+
 # Link para o template do Notion
 https://spiny-show-231.notion.site/Controle-de-Ponto-Template-32e324789a528073a35debd80ad99f76
 
@@ -17,7 +23,7 @@ https://spiny-show-231.notion.site/Controle-de-Ponto-Template-32e324789a528073a3
     NAME = "Matheus"
     TITLE = "Lançamento Horas"
 
-    Ao executar ``python .\generateShiftXlsl.py 02-2026``, o arquivo gerado será o "Matheus - Lançamento Horas - 2026-02"
+    Ao executar ``python .\generateShiftXlsl.py 02-2026``, o arquivo gerado será o "Matheus - Lançamento Horas - 2026-02.xlsx"
 
 # Instalação de pacotes necessários
 Os pacotes Python que são necessários instalar estão listados no arquivo requirements.txt.
