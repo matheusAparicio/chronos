@@ -5,6 +5,27 @@ A ideia é pegar os dados do controle de ponto feito pelo Notion e, através de 
 
 <img width="1919" height="974" alt="image" src="https://github.com/user-attachments/assets/4a48aabd-c171-4ce4-9e24-eb0a8363c5d2" />
 
+# Parâmetros dos pontos no Notion
+
+<img width="401" height="303" alt="image" src="https://github.com/user-attachments/assets/bfe4f8e4-4036-4cf7-9c27-8b8cd1e4063f" />
+
+### Motivo
+É, basicamente, o título do ponto. Comumente vai ser "Começo do expediente", "Saída para o almoço", "Volta do almoço" e "Fim do expediente".
+
+### Projeto
+Dropdown para escolha do projeto em que se estava atuando no momento do ponto. Deixar vazio implicará em "Evolução e Otimização de Sistemas".
+
+### Tarefa
+Campo para o código da tarefa em que se estava trabalhando no momento do ponto. Deixar vazio implicará em "Apontamento de Horas".
+
+### Status
+Dropdown que diz se é um ponto de entrada ou saída do trabalho.
+
+### Horário
+É definido automaticamente e diz respeito ao horário em que o ponto foi batido.
+
+### Criado em
+É definido automaticamente e diz respeito à data em que o ponto foi batido.
 
 
 # Link para o template do Notion
